@@ -1,0 +1,11 @@
+/* Addusers.css */
+
+.add-users {
+    /* Set background properties */
+    /* background-image: url('https://d3i6fh83elv35t.cloudfront.net/static/2023/06/2023-06-11T094224Z_1361206458_RC2XG1ANHMNU_RTRMADP_3_MONTENEGRO-ELECTION-1200x800.jpg'); */
+    background-size: cover; /* Adjust as needed */
+    background-position: center center; /* Adjust as needed */
+    background-repeat: no-repeat;
+    min-height: 100vh; /* Ensure the background covers the entire viewport height */
+  }
+  

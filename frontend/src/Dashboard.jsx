@@ -37,10 +37,7 @@ function Dashboard() {
 								<Link to="/" data-bs-toggle="collapse" className="nav-link text-white px-0 align-middle">
 									<i className="fs-4 bi-speedometer2"></i> <span className="ms-1 d-none d-sm-inline">Home</span> </Link>
 							</li>
-							<li>
-								<Link to="/users" className="nav-link px-0 align-middle text-white">
-								<i class="bi bi-file-earmark-image-fill"></i><span className="ms-1 d-none d-sm-inline">Designs</span> </Link>
-							</li>
+							
 							<li>
 								<Link to="/lineprediction" className="nav-link px-0 align-middle text-white">
                                 <i className="fs-4 bi bi-bar-chart"></i> <span className="ms-1 d-none d-sm-inline">Line Prediction</span> </Link>

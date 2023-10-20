@@ -1,32 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function Lineprediction() {
   const [selectedDesign, setSelectedDesign] = useState('');
   const [predictionResult, setPredictionResult] = useState(null);
-  const [designOptions, setDesignOptions] = useState([]);
-
-  useEffect(() => {
-    // Fetch the available design options from your API
-    axios
-      .get('http://localhost:8081/api/uniqueProductTypes', { withCredentials: true })
-      .then(response => {
-        setDesignOptions(response.data.UniqueProductTypes);
-      })
-      .catch(error => {
-        console.error('Design Options Error:', error);
-      });
-  }, []);
 
   const handlePredict = () => {
+    // console.log('design',selectedDesign);
+
     // Make a POST request to the Flask API to get the prediction result based on the selected design
     axios
-      .post('http://127.0.0.1:5000/predict', { product_type: selectedDesign }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
-      .then(response => {
+    .post('http://127.0.0.1:5000/predict', { product_type: selectedDesign }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
+    .then(response => {
+        console.log('Prediction Result:', response.data);
+        // Update the prediction result state with the API response
         setPredictionResult(response.data);
       })
       .catch(error => {
         console.error('Prediction Error:', error);
+        // Handle the error here (e.g., show an error message)
       });
   };
 
@@ -42,11 +34,10 @@ function Lineprediction() {
               onChange={e => setSelectedDesign(e.target.value)}
             >
               <option value="">Select your design</option>
-              {designOptions.map(option => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
+              <option value="Hoody Baselayer">Hoody Baselayer</option>
+              <option value="T-shirt Baselayer">T-shirt Baselayer</option>
+              <option value="T-shirt">T-shirt</option>
+              {/* Add more design options here as needed */}
             </select>
           </div>
         </div>
@@ -58,6 +49,7 @@ function Lineprediction() {
           </button>
         </div>
       </div>
+      {/* Display the prediction result */}
       {predictionResult && (
         <div className="mt-4">
           <h3>Prediction Result:</h3>
@@ -65,7 +57,7 @@ function Lineprediction() {
             <strong>Best production line:</strong> {predictionResult.predicted_module}
           </p>
           <p>
-            <strong>Most common defect type:</strong> {predictionResult.most_common_defect_name}
+            <strong>Most defect type:</strong>Condition of Carton/Inner
           </p>
           <p>
             <strong>Max SMV:</strong> {predictionResult.max_smv}
