@@ -232,24 +232,24 @@ app.post('/addProductionLine', (req, res) => {
     });
   });
 
-  // Define an endpoint to retrieve all unique "Product Type" values
-app.get('/api/uniqueProductTypes', (req, res) => {
-  const query = `
-    SELECT DISTINCT \`Product Type\`
-    FROM production
-    WHERE \`Product Type\` IS NOT NULL AND \`Product Type\` <> '';
-  `;
+//   // Define an endpoint to retrieve all unique "Product Type" values
+// app.get('/api/uniqueProductTypes', (req, res) => {
+//   const query = `
+//     SELECT DISTINCT \`Product Type\`
+//     FROM production
+//     WHERE \`Product Type\` IS NOT NULL AND \`Product Type\` <> '';
+//   `;
 
-  con.query(query, (err, results) => {
-    if (err) {
-      console.error('Database Error:', err);
-      return res.status(500).json({ Status: "Error", Error: "Error in Database", DatabaseError: err.message });
-    } else {
-      const uniqueProductTypes = results.map(result => result['Product Type']);
-      return res.json({ Status: "Success", UniqueProductTypes: uniqueProductTypes });
-    }
-  });
-});
+//   con.query(query, (err, results) => {
+//     if (err) {
+//       console.error('Database Error:', err);
+//       return res.status(500).json({ Status: "Error", Error: "Error in Database", DatabaseError: err.message });
+//     } else {
+//       const uniqueProductTypes = results.map(result => result['Product Type']);
+//       return res.json({ Status: "Success", UniqueProductTypes: uniqueProductTypes });
+//     }
+//   });
+// });
 
 // Define an endpoint to retrieve all unique "Module" values
 app.get('/api/uniqueModules', (req, res) => {
@@ -270,6 +270,36 @@ app.get('/api/uniqueModules', (req, res) => {
   });
 });
 
+
+// Get styles
+app.get('/getStyles', (req, res) => {
+  const sql = "SELECT * FROM style";
+
+  con.query(sql, (err, result) => {
+    if (err) {
+      console.error('Database Error:', err);
+      return res.json({ Status: "Error", Error: "Error in Database", DatabaseError: err.message });
+    } else {
+      return res.json({ Status: "Success", Result: result });
+    }
+  });
+});
+
+
+// Define an endpoint to retrieve all unique "Product Type" values
+app.get('/api/uniqueProductTypes', (req, res) => {
+  const query = `SELECT * FROM style;`;
+
+  con.query(query, (err, results) => {
+    if (err) {
+      console.error('Database Error:', err);
+      return res.status(500).json({ Status: "Error", Error: "Error in Database", DatabaseError: err.message });
+    } else {
+      const uniqueProductTypes = results.map(result => result['style']);
+      return res.json({ Status: "Success", UniqueProductTypes: uniqueProductTypes });
+    }
+  });
+});
   
   
 
