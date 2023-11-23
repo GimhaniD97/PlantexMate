@@ -21,7 +21,7 @@ function Lineprediction() {
   const handlePredict = () => {
     // Make a POST request to the Flask API to get the prediction result based on the selected design
     axios
-      .post('http://127.0.0.1:5000/predict', { product_type: selectedDesign }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
+      .post('http://127.0.0.1:5000/predict', { STYLE: selectedDesign }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
       .then(response => {
         setPredictionResult(response.data);
       })
@@ -59,22 +59,24 @@ function Lineprediction() {
         </div>
       </div>
       {predictionResult && (
-        <div className="mt-4">
-          <h3>Prediction Result:</h3>
-          <p>
-            <strong>Best production line:</strong> {predictionResult.predicted_module}
-          </p>
-          <p>
-            <strong>Most common defect type:</strong> {predictionResult.most_common_defect_name}
-          </p>
-          <p>
-            <strong>Max SMV:</strong> {predictionResult.max_smv}
-          </p>
-          <p>
-            <strong>Min SMV:</strong> {predictionResult.min_smv}
-          </p>
-        </div>
-      )}
+  <div className="mt-4">
+    <h3>Prediction Result:</h3>
+    <p>
+      <strong>Best Factory:</strong> {predictionResult['Predicted Best Factory']}
+    </p>
+    <p>
+      <strong>Predicted Team:</strong> {predictionResult['Predicted Team']}
+    </p>
+    <p>
+      <strong>Most common defect type:</strong> {predictionResult['Predicted Most Common Defect']}
+    </p>
+    
+    <p>
+      {/* <strong>STYLE:</strong> {predictionResult['STYLE']} */}
+    </p>
+  </div>
+)}
+
     </div>
   );
 }
