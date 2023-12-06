@@ -300,6 +300,38 @@ app.get('/api/uniqueProductTypes', (req, res) => {
     }
   });
 });
+
+
+// Define an endpoint to retrieve all unique "Customers" values
+app.get('/api/customers', (req, res) => {
+  const query = `SELECT DISTINCT customer FROM customer;`;
+
+  con.query(query, (err, results) => {
+    if (err) {
+      console.error('Database Error:', err);
+      return res.status(500).json({ Status: "Error", Error: "Error in Database", DatabaseError: err.message });
+    } else {
+      const customer = results.map(result => result['customer']);
+      return res.json({ Status: "Success", customer: customer });
+    }
+  });
+});
+  
+
+// Define an endpoint to retrieve all unique "Customers" values
+app.get('/api/style', (req, res) => {
+  const query = `SELECT DISTINCT style FROM customer;`;
+
+  con.query(query, (err, results) => {
+    if (err) {
+      console.error('Database Error:', err);
+      return res.status(500).json({ Status: "Error", Error: "Error in Database", DatabaseError: err.message });
+    } else {
+      const style = results.map(result => result['style']);
+      return res.json({ Status: "Success", style: style });
+    }
+  });
+});
   
   
 
