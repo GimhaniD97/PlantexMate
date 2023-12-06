@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 23, 2023 at 06:07 PM
+-- Generation Time: Dec 06, 2023 at 05:25 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -20,6 +20,132 @@ SET time_zone = "+00:00";
 --
 -- Database: `plantexmate`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE `customer` (
+  `customer` varchar(100) DEFAULT NULL,
+  `style` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer`, `style`) VALUES
+('MnS', 'BRA'),
+('LIN', 'KNICKERS'),
+('LIN', 'BRA'),
+('DEC', 'SHORT'),
+('LIN', 'BRA'),
+('DEC', 'TOP ACTIVE'),
+('LIN', 'BRIEF'),
+('DEC', 'TOP ACTIVE'),
+('DEC', 'TOP ACTIVE'),
+('DEC', 'Top & bottom'),
+('GEO', 'BRIEF'),
+('DEC', 'SHORT'),
+('DEC', 'BOXER'),
+('GEO', 'BRIEF'),
+('GEO', 'KNICKERS'),
+('DEC', 'BRA'),
+('DEC', 'TOP ACTIVE'),
+('DEC', 'TOP ACTIVE'),
+('MnS', 'BIKINI TOP'),
+('MnS', 'BIKINI TOP'),
+('DEC', 'TOP ACTIVE'),
+('DEC', 'BRIEF'),
+('DEC', 'BRIEF'),
+('MnS', 'BRA'),
+('DEC', 'BRIEF'),
+('MnS', 'BODYSHUIT'),
+('MnS', 'BODYSHUIT'),
+('MnS', 'BODYSHUIT'),
+('MnS', 'BODYSHUIT'),
+('MnS', 'BODYSHUIT'),
+('MnS', 'SWIMWEAR'),
+('DEC', 'SWIMWEAR'),
+('DEC', 'SKINNY'),
+('DEC', 'N/A'),
+('MnS', 'BRA'),
+('MnS', 'BRA'),
+('MnS', 'BRA'),
+('MnS', 'BRA'),
+('DEC', 'SWIMWEAR'),
+('DEC', 'SKINNY'),
+('MnS', 'BRA'),
+('MnS', 'SWIMWEAR'),
+('DEC', 'JACKET'),
+('DEC', 'N/A'),
+('MnS', 'BRA'),
+('MnS', 'JACKET'),
+('DEC', 'BOXER'),
+('DEC', 'LINGERIE'),
+('DEC', 'N/A'),
+('MnS', 'BRA'),
+('MnS', 'BRA'),
+('MnS', 'BRA'),
+('DEC', 'JACKET'),
+('DEC', 'LINGERIE'),
+('MnS', 'BRA'),
+('MnS', 'BRA'),
+('DEC', 'SWIMWEAR'),
+('DEC', 'SKINNY'),
+('MnS', 'BRA'),
+('MnS', 'BRA'),
+('DEC', 'SWIMWEAR'),
+('MnS', 'BRA'),
+('MnS', 'JACKET'),
+('DEC', 'SWIMWEAR'),
+('DEC', 'SWIMWEAR'),
+('DEC', 'SKINNY'),
+('MnS', 'BRA'),
+('MnS', 'JACKET'),
+('DEC', 'LINGERIE'),
+('DEC', 'BOTTOM ACTIVE'),
+('DEC', 'SKINNY'),
+('MnS', 'BRA'),
+('MnS', 'BRA'),
+('DEC', 'LINGERIE'),
+('DEC', 'LINGERIE'),
+('DEC', 'SKINNY'),
+('MnS', 'BRIEF'),
+('MnS', 'SWIMWEAR'),
+('DEC', 'SWIMWEAR'),
+('DEC', 'SWIMWEAR'),
+('DEC', 'BODY'),
+('MnS', 'BRIEF'),
+('MnS', 'BRIEF'),
+('MnS', 'BRA'),
+('MnS', 'SWIMWEAR'),
+('DEC', 'LINGERIE'),
+('DEC', 'SWIMWEAR'),
+('MnS', 'SWIMWEAR'),
+('MnS', 'BRA'),
+('MnS', 'SWIMWEAR'),
+('MnS', 'BRA'),
+('DEC', 'JACKET'),
+('NEX', 'PANT'),
+('DEC', 'SWIMWEAR'),
+('GSS', 'SWIMWEAR'),
+('DEC', 'TOP ACTIVE'),
+('DEC', 'PANT'),
+('DEC', 'SHORT'),
+('DEC', 'JACKET'),
+('DEC', 'SWIMWEAR'),
+('DEC', 'BOTTOM'),
+('DEC', 'BOTTOM'),
+('MnS', 'BRA'),
+('DEC', 'JACKET'),
+('MnS', 'PANT'),
+('NEX', 'PANT'),
+('DEC', 'LEISURE'),
+('NEX', 'LEGIN'),
+('DEC', 'PANT');
 
 -- --------------------------------------------------------
 

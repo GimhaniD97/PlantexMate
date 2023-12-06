@@ -3,15 +3,30 @@ import axios from 'axios';
 
 function Lineprediction() {
   const [selectedDesign, setSelectedDesign] = useState('');
+  const [selectedStyle, setSelectedStyle] = useState('');
   const [predictionResult, setPredictionResult] = useState(null);
   const [designOptions, setDesignOptions] = useState([]);
+  const [styles, setStyles] = useState([]);
 
   useEffect(() => {
-    // Fetch the available design options from your API
+    // Fetch the available customers options from your API
     axios
-      .get('http://localhost:8081/api/uniqueProductTypes', { withCredentials: true })
+      .get('http://localhost:8081/api/customers', { withCredentials: true })
       .then(response => {
-        setDesignOptions(response.data.UniqueProductTypes);
+        setDesignOptions(response.data.customer);
+      })
+      .catch(error => {
+        console.error('Design Options Error:', error);
+      });
+  }, []);
+
+
+  useEffect(() => {
+    // Fetch the available styles options from your API
+    axios
+      .get('http://localhost:8081/api/style', { withCredentials: true })
+      .then(response => {
+        setStyles(response.data.style);
       })
       .catch(error => {
         console.error('Design Options Error:', error);
@@ -21,7 +36,7 @@ function Lineprediction() {
   const handlePredict = () => {
     // Make a POST request to the Flask API to get the prediction result based on the selected design
     axios
-      .post('http://127.0.0.1:5000/predict', { STYLE: selectedDesign }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
+      .post('http://127.0.0.1:5000/predict', { CUSTOMER: selectedDesign, STYLE_FAMILY: selectedStyle, }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } })
       .then(response => {
         setPredictionResult(response.data);
       })
@@ -41,8 +56,21 @@ function Lineprediction() {
               value={selectedDesign}
               onChange={e => setSelectedDesign(e.target.value)}
             >
-              <option value="">Select your design</option>
+              <option value="">Select customer</option>
               {designOptions.map(option => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+
+            <select
+              className="form-control mt-4"
+              value={selectedStyle}
+              onChange={e => setSelectedStyle(e.target.value)}
+            >
+              <option value="">Select style</option>
+              {styles.map(option => (
                 <option key={option} value={option}>
                   {option}
                 </option>
@@ -62,13 +90,13 @@ function Lineprediction() {
   <div className="mt-4">
     <h3>Prediction Result:</h3>
     <p>
-      <strong>Best Factory:</strong> {predictionResult['Predicted Best Factory']}
+      <strong>Best Factory:</strong> {predictionResult['Predicted_Factory']}
     </p>
     <p>
-      <strong>Predicted Team:</strong> {predictionResult['Predicted Team']}
+      <strong>Predicted Team:</strong> {predictionResult['Predicted_Team']}
     </p>
     <p>
-      <strong>Most common defect type:</strong> {predictionResult['Predicted Most Common Defect']}
+      <strong>Most common defect type:</strong> {predictionResult['Most_Common_Defect']}
     </p>
     
     <p>
